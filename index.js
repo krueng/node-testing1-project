@@ -7,10 +7,10 @@
  * trimProperties({ name: '  jane  ' }) // returns a new object { name: 'jane' }
  */
 function trimProperties(obj) {
-    for (var key in obj) {
-    obj[key] = obj[key].trim();
+  for (var key in obj) {
+    obj[key] = obj[key].trim()
   }
-  return obj;
+  return obj
 }
 
 /**
@@ -22,14 +22,10 @@ function trimProperties(obj) {
  * trimPropertiesMutation({ name: '  jane  ' }) // returns the object mutated in place { name: 'jane' }
  */
 function trimPropertiesMutation(obj) {
-// return Object.keys(obj).reduce((acc, val) => {
-//     acc[val] = obj[val].trim()
-//     return acc;
-//   }, {});
   for (var key in obj) {
-    obj[key] = obj[key].trim();
+    obj[key] = obj[key].trim()
   }
-  return obj;
+  return obj
 }
 
 /**
@@ -93,9 +89,8 @@ class Seasons {
    * seasons.next() // returns "summer"
    */
   next() {
-    this.call ++
-    return this.seasons[this.call%4]
-    // ✨ implement
+    this.call++
+    return this.seasons[this.call % 4]
   }
 }
 
@@ -110,7 +105,8 @@ class Car {
     this.odometer = 0 // car initilizes with zero miles
     this.tank = tankSize // car initiazes full of gas
     this.mpg = mpg
-    // ✨ initialize whatever other properties are needed
+    this.carModel = name
+    this.maxDistance = tankSize * mpg
   }
 
   /**
@@ -127,7 +123,9 @@ class Car {
    * focus.drive(200) // returns 600 (ran out of gas after 100 miles)
    */
   drive(distance) {
-    // ✨ implement
+    this.odometer += distance
+    return this.maxDistance >= this.odometer ? this.odometer :
+      `${this.maxDistance} (ran out of gas after ${this.odometer - this.maxDistance} miles)`
   }
 
   /**
@@ -142,7 +140,10 @@ class Car {
    * focus.refuel(99) // returns 600 (tank only holds 20)
    */
   refuel(gallons) {
-    // ✨ implement
+    let newDistance = gallons * this.mpg
+    return this.maxDistance > newDistance ?
+      `${newDistance} more miles before next refueling` :
+      `${this.maxDistance} (tank only holds ${this.tank})`
   }
 }
 
@@ -160,7 +161,7 @@ class Car {
  * })
  */
 function isEvenNumberAsync(number) {
-  // ✨ implement
+  return number % 2 === 0
 }
 
 module.exports = {
