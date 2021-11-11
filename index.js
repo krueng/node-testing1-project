@@ -51,8 +51,7 @@ class Counter {
    * @param {number} initialNumber - the initial state of the count
    */
   constructor(initialNumber) {
-    // this.initialNumber = initialNumber
-    this.result =  initialNumber
+    this.result = initialNumber + 1
   }
 
   /**
@@ -68,10 +67,8 @@ class Counter {
    * counter.countDown() // returns 0
    */
   countDown() {
-    -this.result
-    return {
-      result: this.result,
-    }
+    this.result -= 1
+    return this.result < 0 ? 0 : this.result
   }
 }
 class Seasons {
