@@ -173,3 +173,7 @@ module.exports = {
   Seasons,
   Car,
 }
+
+// [Exercise 6]Car[16] driving the car uses gas
+// [Exercise 6]Car[17] refueling allows to keep driving
+// [Exercise 6]Car[18] adding fuel to a full tank has no effect
