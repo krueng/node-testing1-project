@@ -120,7 +120,6 @@ describe('[Exercise 6] Car', () => {
 
   })
   test('[17] refueling allows to keep driving', () => {
-    //expect(focus.refuel(10)).toBe('300 more miles before next refueling')
     focus.drive(600)
     focus.refuel(10)
     focus.drive(600)

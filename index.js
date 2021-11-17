@@ -147,10 +147,6 @@ class Car {
    * focus.refuel(99) // returns 600 (tank only holds 20)
    */
   refuel(gallons) {
-    // let newDistance = gallons * this.mpg
-    // return this.maxDistance > newDistance ?
-    //   `${newDistance} more miles before next refueling` :
-    //   `${this.maxDistance} (tank only holds ${this.tank})`
     if (gallons <= this.tankSize - this.tank) {
       this.tank = this.tank + gallons
     } else {
