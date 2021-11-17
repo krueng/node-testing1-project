@@ -105,6 +105,7 @@ class Car {
   constructor(name, tankSize, mpg) {
     this.odometer = 0 // car initilizes with zero miles
     this.tank = tankSize // car initiazes full of gas
+    this.tankSize = tankSize
     this.mpg = mpg
     this.carModel = name
     this.maxDistance = tankSize * mpg
@@ -124,20 +125,16 @@ class Car {
    * focus.drive(200) // returns 600 (ran out of gas after 100 miles)
    */
   drive(distance) {
-    // this.odometer += distance
-    // return this.maxDistance >= this.odometer ? this.odometer :
-    //   `${this.maxDistance} (ran out of gas after ${this.odometer - this.maxDistance} miles)`
     const milesCanDrive = this.tank * this.mpg
     if (distance <= milesCanDrive) {
       this.odometer = this.odometer + distance
       this.tank = this.tank - (distance / this.mpg)
-      return this.odometer
+    } else {
+      this.tank = 0
+      this.odometer = this.odometer + milesCanDrive
     }
-    this.odometer = this.odometer + milesCanDrive
-    this.tank = 0
     return this.odometer
   }
-
   /**
    * [Exercise 6C] Adds gallons to the tank
    * @param {number} gallons - the gallons of fuel we want to put in the tank
@@ -150,10 +147,16 @@ class Car {
    * focus.refuel(99) // returns 600 (tank only holds 20)
    */
   refuel(gallons) {
-    let newDistance = gallons * this.mpg
-    return this.maxDistance > newDistance ?
-      `${newDistance} more miles before next refueling` :
-      `${this.maxDistance} (tank only holds ${this.tank})`
+    // let newDistance = gallons * this.mpg
+    // return this.maxDistance > newDistance ?
+    //   `${newDistance} more miles before next refueling` :
+    //   `${this.maxDistance} (tank only holds ${this.tank})`
+    if (gallons <= this.tankSize - this.tank) {
+      this.tank = this.tank + gallons
+    } else {
+      this.tank = this.tankSize
+    }
+    return this.tank * this.mpg
   }
 }
 
@@ -184,6 +187,5 @@ module.exports = {
   Car,
 }
 
-// [Exercise 6]Car[16] driving the car uses gas
 // [Exercise 6]Car[17] refueling allows to keep driving
 // [Exercise 6]Car[18] adding fuel to a full tank has no effect
